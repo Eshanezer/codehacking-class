@@ -19,7 +19,7 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-
+Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostController@post']);
 
 Route::group(['middleware' => 'admin'], function () {
 
@@ -29,5 +29,14 @@ Route::group(['middleware' => 'admin'], function () {
     });
 
     Route::resource('/admin/users','AdminUserController');
+
+    Route::resource('/admin/posts','AdminPostController');
+
+    Route::resource('/admin/categories','AdminCategoryController');
+
+    Route::resource('/admin/media','AdminMediaController');
+
+    Route::resource('/admin/comments','PostCommentController');
+
 
 });
